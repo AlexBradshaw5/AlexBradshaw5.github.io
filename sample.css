@@ -1,0 +1,60 @@
+body {
+	background-image: url("background.JPG");
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    margin: 0;
+    font-family: Open Sans;
+	color: #fff;
+}
+
+h3 {
+	font-size: 500%;
+	padding-left: 10%;
+	padding-right: 10%;
+	text-align: left;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#about{
+	font-family: Open Sans;
+	color: #fff;
+	padding: 3%;
+	text-align: left;
+	background-color:rgba(0,0,0, 0.6);
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+#menu a {
+	color: #FFF;
+	padding: 10px;
+	text-decoration: none;
+	border-style: solid;
+	border-color: #FFF;
+}
+
+a:link {
+    color: #FFF;
+}
+
+a:visited {
+    color: rgba(194, 175, 78, 0.8);;
+}
+
+a:hover{
+	color: rgb(100, 128, 173);
+  	cursor: default;
+}
+
+#contact {
+	position:fixed;
+	left:0px;
+    bottom:0px;
+    width:100%;
+    background:rgba(0,0,0, 0.8);
+    padding-left: 10%;
+    padding-right: 10%;
+}
