@@ -1,0 +1,91 @@
+body {
+	background-image: url("./images/emerald background night.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+	color: #fff;
+}
+
+h1 {
+        display: inline-block;
+	font-size: 45px;
+        text-align: center;
+        color: red;
+        overflow: hidden;
+        white-space: nowrap;
+        animation: typing 4s steps(100) forwards;
+    	margin: 0 auto;
+}
+
+.title-container {
+        text-align: center;
+	padding: 30px;
+
+      }
+
+@keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+}
+
+#about{
+	color: #fff;
+	padding: 3%;
+	text-align: left;
+	background-color:rgba(0,0,0, 0.6);
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 1%
+}
+
+li {
+	font-size: 18px;
+	line-height: 1.45;
+	border-color: #FFF;
+	text-decoration: none;
+}
+
+#menu a {
+	color: #FFF;
+	padding: 10px;
+	text-decoration: none;
+        font-size: 18px;
+	border-style: solid;
+	border-color: #FFF;
+}
+
+a:link {
+    color: #FFF;
+}
+
+a:visited {
+    color: rgba(194, 175, 78, 0.8);
+}
+
+a:hover{
+	color: rgb(100, 128, 173);
+  	cursor: pointer;
+}
+
+p {
+        font-size: 18px;
+        text-align: left;
+}
+pp {
+        font-size: 20px;
+        text-align: center;
+}
+#contact {
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    justify-content: center;
+    text-align: center; 
+    bottom:0px;
+    width:90%%;
+    background:rgba(0,0,0, 0.8);
+}
