@@ -1,2 +1,2 @@
-# Work in Progress
-This is going to be the host github repo for my website [here](https://alexbradshaw5.github.io/)
+# Welcome to the github of the first official website of Alex Bradshaw.
+## Access the website [here!](https://alexbradshaw5.github.io/)
