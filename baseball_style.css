@@ -28,13 +28,13 @@ body {
   	margin-top: 100px;
       }
       a:link {
-	color: #FFF;
+	color: rgb(51, 149, 255);
       }
       a:visited {
-	color: rgba(194, 175, 78, 0.8);
+	color: rgba(167, 128, 217, 0.8);
       }
       a:hover{
-	color: rgb(100, 128, 173);
+	color: rgb(194, 175, 78);
 	cursor: pointer;
       }
       .grid {
@@ -44,6 +44,7 @@ body {
         grid-gap: 20px;
         margin-top: 50px;
       }
+
       .grid img {
   	width: 400px;
   	height: 400px;

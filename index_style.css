@@ -15,6 +15,8 @@ h1 {
         white-space: nowrap;
         animation: typing 4s steps(100) forwards;
     	margin: 0 auto;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .title-container {
@@ -58,18 +60,16 @@ li {
 	border-color: #FFF;
 }
 
-a:link {
-    color: #FFF;
-}
-
-a:visited {
-    color: rgba(194, 175, 78, 0.8);
-}
-
-a:hover{
-	color: rgb(100, 128, 173);
-  	cursor: pointer;
-}
+      a:link {
+	color: rgb(51, 149, 255);
+      }
+      a:visited {
+	color: rgba(167, 128, 217, 0.8);
+      }
+      a:hover{
+	color: rgb(194, 175, 78);
+	cursor: pointer;
+      }
 
 p {
         font-size: 18px;
