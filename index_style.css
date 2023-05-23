@@ -11,7 +11,7 @@ h1 {
 	font-size: 45px;
         text-align: center;
         color: red;
-        overflow: hidden;
+        overflow: visible;
         white-space: nowrap;
         animation: typing 4s steps(100) forwards;
     	margin: 0 auto;
