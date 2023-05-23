@@ -1,9 +1,9 @@
 body {
   font-family: "Times New Roman", sans-serif;
-  background-image: url("./images/zona_pitch.jpg"), url("./images/zona_hit.jpg"), url("./images/zona_pitch.jpg"), url("./images/zona_hit.jpg");
+  background-image: url("./images/combo background.png");
   background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center top, center 940px, center calc(940px*2), center calc(940px*3);
+  background-repeat: repeat-y;
+  background-position: center top;
 }
       .container {
         max-width: 960px;
