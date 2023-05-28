@@ -8,7 +8,7 @@ body {
       .container {
         max-width: 960px;
         margin: 0 auto;
-        padding: 10px;
+        padding: 10p;
         text-align: center;
       }
       h1 {
@@ -28,7 +28,7 @@ body {
   	margin-top: 100px;
       }
       a:link {
-	color: rgb(51, 149, 255);
+	color: rgb(23, 153, 252);
       }
       a:visited {
 	color: rgba(167, 128, 217, 0.8);

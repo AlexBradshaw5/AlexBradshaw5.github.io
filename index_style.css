@@ -22,7 +22,6 @@ h1 {
 .title-container {
         text-align: center;
 	padding: 30px;
-
       }
 
 @keyframes typing {
@@ -61,7 +60,7 @@ li {
 }
 
       a:link {
-	color: rgb(51, 149, 255);
+	color: rgb(23, 153, 252);
       }
       a:visited {
 	color: rgba(167, 128, 217, 0.8);
