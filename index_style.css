@@ -65,10 +65,10 @@ li {
 }
 
       a:link {
-	color: rgb(23, 153, 252);
+	color: rgb(150, 210, 255);
       }
       a:visited {
-	color: rgba(167, 128, 217, 0.8);
+	color: rgba(207, 168, 257, 1);
       }
       a:hover{
 	color: rgb(194, 175, 78);
