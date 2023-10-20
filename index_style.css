@@ -21,6 +21,16 @@ h1 {
 	margin-bottom: 0%;
 }
 
+h2 {
+        display: inline-block;
+	font-size: 37px;
+        text-align: center;
+        color: #ffffff;
+    	margin: 0;
+	margin-top: 2.5%;
+	margin-bottom: 0%;
+}
+
 .title-container {
         text-align: center;
 	padding: 30px;
