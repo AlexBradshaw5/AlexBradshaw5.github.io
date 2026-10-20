@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0083)file:///Users/abradshaw/Desktop/General/General/Website/Alex's%20Data%20Center.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex's Data Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./Alex's Data Center_files/css2" rel="stylesheet">
+<style>
+  :root{
+    --pink:#ff8fb1; --pink-soft:#ffe3ec;
+    --mint:#8fe3cf; --cream:#fff8ee;
+    --choc:#4a2c2a; --butter:#ffd98a;
+    --logo-red:#e53e30; --logo-blue:#3552a3;
+    --card-radius:22px;
+    --shadow:0 8px 24px rgba(74,44,42,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
+    background:var(--cream); color:var(--choc); line-height:1.5;
+  }
+  h1,h2,h3{font-family:"Georgia","Times New Roman",serif; line-height:1.15}
+  a{color:inherit}
+  section{padding:80px 20px; max-width:1150px; margin:0 auto}
+  .section-title{text-align:center; margin-bottom:10px; font-size:2.3rem}
+  .section-sub{text-align:center; opacity:.75; margin-bottom:30px}
+
+  /* ---------- LOGO (script + caps, in the style of An's Dry Cleaning) ---------- */
+  .logo-mark{
+    --s:2.4rem;
+    font-size:var(--s); line-height:1;
+    display:inline-flex; align-items:baseline; gap:.1em;
+    text-decoration:none; white-space:nowrap;
+  }
+  .logo-mark .script{
+    font-family:"Pinyon Script","Snell Roundhand","Brush Script MT",cursive;
+    color:var(--logo-red); font-size:1em; line-height:1.1; font-weight:400;
+  }
+  .logo-mark .caps{
+    font-family:"Montserrat","Gotham","Helvetica Neue",Arial,sans-serif;
+    font-weight:700; color:var(--logo-blue); font-size:.34em; letter-spacing:.015em;
+  }
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,248,238,.94); backdrop-filter:blur(8px);
+    border-bottom:2px dashed var(--pink);
+    display:flex; justify-content:space-between; align-items:center;
+    padding:8px 24px; flex-wrap:wrap; gap:8px;
+  }
+  nav ul{display:flex; gap:20px; list-style:none; flex-wrap:wrap}
+  nav ul a{text-decoration:none; font-weight:bold; font-size:.95rem; padding:4px 2px; border-bottom:3px solid transparent}
+  nav ul a:hover{border-color:var(--pink)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(120deg,#ffe3ec,#e4fbf5,#fff1c9,#ffe3ec);
+    background-size:300% 300%; animation:shift 14s ease infinite;
+    text-align:center; padding:70px 20px 140px; max-width:none; position:relative; overflow:hidden;
+  }
+  @keyframes shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .hero-inner{position:relative; z-index:2}
+  .hero .logo-mark{display:flex; width:fit-content; margin:0 auto 22px; animation:logoBob 5s ease-in-out infinite}
+  @keyframes logoBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  .hero h1{font-size:clamp(1.6rem,4.5vw,2.6rem); margin-bottom:12px}
+  .hero p{max-width:540px; margin:0 auto 28px; font-size:1.1rem}
+  .float{position:absolute; z-index:1; opacity:.55; animation:bob ease-in-out infinite; pointer-events:none; user-select:none}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-22px) rotate(8deg)}}
+  .sprinkle{
+    position:absolute; top:-30px; z-index:1; width:6px; height:16px; border-radius:4px;
+    opacity:.85; animation:fall linear infinite; pointer-events:none;
+  }
+  @keyframes fall{
+    from{transform:translateY(-30px) rotate(var(--r))}
+    to{transform:translateY(800px) rotate(calc(var(--r) + 540deg))}
+  }
+  .badge{
+    position:absolute; z-index:2; top:26px; right:6%; width:98px; height:98px; border-radius:50%;
+    background:var(--butter); border:3px dashed var(--choc);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-weight:bold; font-size:.8rem; line-height:1.2; transform:rotate(12deg);
+    animation:wobble 4s ease-in-out infinite; box-shadow:0 4px 0 rgba(0,0,0,.15);
+  }
+  @keyframes wobble{0%,100%{transform:rotate(12deg) scale(1)}50%{transform:rotate(-8deg) scale(1.08)}}
+  @media(max-width:760px){.badge{display:none}}
+  .wave{position:absolute; left:0; bottom:-1px; width:200%; height:80px; z-index:1; animation:slide 14s linear infinite}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  .btn{
+    display:inline-block; background:var(--choc); color:#fff; border:none;
+    padding:13px 28px; border-radius:999px; font-size:1rem; font-weight:bold;
+    text-decoration:none; cursor:pointer; transition:transform .15s, box-shadow .15s;
+    box-shadow:0 4px 0 rgba(0,0,0,.25); font-family:inherit; margin:0 4px;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(2px); box-shadow:none}
+  .btn.pink{background:var(--pink); color:var(--choc)}
+
+  /* ---------- EDIT BUTTONS (About / Reviews / Hours / Find us) ---------- */
+  .editbox{position:relative}
+  .edit-btn{
+    position:absolute; top:0; right:0; z-index:3; background:#fff; color:var(--choc);
+    border:2px solid var(--choc); border-radius:999px; padding:3px 12px; font-size:.75rem;
+    font-weight:bold; cursor:pointer; font-family:inherit; box-shadow:0 2px 0 rgba(0,0,0,.2);
+  }
+  .edit-btn:hover{background:var(--butter)}
+  .editbox.editing .edit-btn{background:#2d8a5b; color:#fff; border-color:#2d8a5b}
+  .editbox.editing{outline:2px dashed var(--pink); outline-offset:8px; border-radius:6px}
+  .info-box.editbox .edit-btn{top:12px; right:12px}
+  .info-box.editbox.editing{outline-offset:-8px}
+  .info-box.editbox .edit-body > h3{padding-right:70px}
+  .x-rm{
+    border:none; background:#fff; color:#c0392b; font-weight:bold; cursor:pointer; border-radius:50%;
+    width:22px; height:22px; box-shadow:0 1px 4px rgba(0,0,0,.3); font-family:inherit; font-size:.7rem; line-height:1;
+  }
+  .add-btn{
+    display:none; margin:18px auto 0; background:none; border:2px dashed var(--pink); color:var(--choc);
+    border-radius:999px; padding:6px 18px; font-weight:bold; font-size:.85rem; cursor:pointer; font-family:inherit;
+  }
+  .add-btn:hover{background:var(--pink-soft)}
+  .editbox.editing .add-btn{display:block}
+
+  /* ---------- FLAVORS ---------- */
+  .hint{
+    text-align:center; font-size:.85rem; background:var(--butter);
+    display:table; margin:0 auto 22px; padding:6px 16px; border-radius:999px; max-width:100%;
+  }
+  .filters{display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:28px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0}
+  .chip{
+    border:2px solid var(--choc); background:#fff; border-radius:999px; padding:6px 12px;
+    cursor:pointer; font-size:.85rem; font-family:inherit; color:var(--choc); font-weight:bold;
+  }
+  .chip:hover{background:var(--butter)}
+  .chip.active{background:var(--choc); color:#fff}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(235px,1fr)); gap:22px}
+  .empty{grid-column:1/-1; text-align:center; opacity:.6; padding:20px}
+  .card{
+    background:#fff; border-radius:var(--card-radius); overflow:hidden;
+    box-shadow:var(--shadow); display:flex; flex-direction:column;
+    transition:transform .2s, box-shadow .2s; position:relative;
+  }
+  .card:hover{transform:translateY(-4px) rotate(-.4deg)}
+  .card.fav{box-shadow:0 0 0 3px var(--butter), var(--shadow)}
+  .img-box{
+    aspect-ratio:1/1; width:100%; position:relative; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .img-box .emoji{font-size:5.5rem; filter:drop-shadow(0 4px 6px rgba(0,0,0,.2))}
+  .img-box img{width:100%; height:100%; object-fit:cover; display:block}
+  .img-box.dragover{outline:4px dashed var(--choc); outline-offset:-8px}
+  .upload-overlay{
+    position:absolute; inset:auto 0 0 0; padding:8px; text-align:center;
+    background:rgba(74,44,42,.78); color:#fff; font-size:.8rem; font-weight:bold;
+    transform:translateY(100%); transition:transform .2s;
+    display:flex; justify-content:center; align-items:center; gap:10px;
+  }
+  .upload-overlay .rm{
+    background:#fff; color:var(--choc); border:none; border-radius:999px; padding:2px 10px;
+    font-size:.7rem; font-weight:bold; cursor:pointer; font-family:inherit;
+  }
+  .img-box:hover .upload-overlay{transform:translateY(0)}
+  @media (hover:none){.upload-overlay{transform:translateY(0)}}
+
+  .tag{
+    position:absolute; top:10px; left:10px; z-index:2; cursor:pointer; font-family:inherit;
+    font-size:.72rem; font-weight:bold; padding:4px 10px; border-radius:8px;
+    transform:rotate(-4deg); box-shadow:0 2px 6px rgba(0,0,0,.2); transition:transform .15s, opacity .2s;
+  }
+  .tag:hover{transform:rotate(-4deg) scale(1.08)}
+  .tag.wip{background:#ffd98a; border:2px dashed #b57a00; color:#6b4300}
+  .tag.done{background:#c9f2dc; border:2px solid #2d8a5b; color:#17583a}
+  .tag.none{background:rgba(255,255,255,.85); border:2px dotted var(--choc); color:var(--choc); opacity:0}
+  .card:hover .tag.none{opacity:.9}
+  @media (hover:none){.tag.none{opacity:.8}}
+
+  .star{
+    position:absolute; top:8px; right:8px; z-index:2; width:34px; height:34px; border-radius:50%;
+    border:none; background:#fff; cursor:pointer; font-size:1.2rem; line-height:1; color:#bbb;
+    box-shadow:0 2px 6px rgba(0,0,0,.2); transition:transform .15s;
+  }
+  .star:hover{transform:scale(1.15)}
+  .star.on{color:#f5a623; animation:pop .3s ease}
+  .del{
+    position:absolute; top:12px; right:50px; z-index:2; width:26px; height:26px; border-radius:50%;
+    border:none; background:#fff; cursor:pointer; font-weight:bold; font-size:.75rem;
+    box-shadow:0 2px 6px rgba(0,0,0,.2); opacity:0; transition:opacity .2s;
+  }
+  .card:hover .del{opacity:1}
+  @media (hover:none){.del{opacity:1}}
+
+  .info{padding:14px 16px 14px}
+  .info h3{font-size:1.1rem; margin-bottom:8px}
+  .ings{list-style:none; font-size:.78rem}
+  .ings li{display:flex; align-items:baseline; gap:4px; padding:1px 0}
+  .ings li::after{content:""; order:1; flex:1; border-bottom:1px dotted rgba(74,44,42,.35); transform:translateY(-3px); min-width:8px}
+  .ings .iname{order:0}
+  .ings .iamt{order:2; font-weight:bold; text-align:right}
+  .irm{
+    order:3; border:none; background:none; cursor:pointer; color:#c0392b; font-size:.8rem; font-weight:bold;
+    width:16px; padding:0; opacity:0; transition:opacity .15s; font-family:inherit;
+  }
+  .ings li:hover .irm{opacity:1}
+  @media (hover:none){.irm{opacity:.7}}
+  .add-ing{
+    margin-top:8px; width:100%; background:none; border:2px dashed rgba(74,44,42,.3); color:var(--choc);
+    border-radius:10px; padding:3px; font-size:.75rem; font-weight:bold; cursor:pointer; font-family:inherit;
+  }
+  .add-ing:hover{background:var(--pink-soft); border-color:var(--pink)}
+  [contenteditable]{outline:none; border-radius:4px; min-width:1ch}
+  [contenteditable]:hover{background:rgba(255,217,138,.35)}
+  [contenteditable]:focus{background:rgba(255,217,138,.6)}
+  [data-ph]:empty::before{content:attr(data-ph); opacity:.4; font-weight:normal}
+
+  .add-card{
+    border:3px dashed var(--pink); background:transparent; box-shadow:none;
+    justify-content:center; align-items:center; min-height:300px; cursor:pointer;
+    font-size:1.1rem; font-weight:bold; color:var(--choc); font-family:inherit;
+  }
+  .add-card span{font-size:3rem; display:block}
+
+  /* ---------- SUGGEST A CONE ---------- */
+  .builder-wrap{background:var(--mint); max-width:none; padding:0}
+  .builder{max-width:1000px; margin:0 auto; padding:80px 20px 40px;
+    display:grid; grid-template-columns:1fr 1.15fr; gap:40px; align-items:center}
+  @media(max-width:760px){.builder{grid-template-columns:1fr}}
+  .cone-stage{
+    background:#fff; border-radius:var(--card-radius); box-shadow:var(--shadow);
+    min-height:360px; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; padding:20px 20px 30px;
+  }
+  .preview-name{
+    margin-bottom:auto; font-family:Georgia,serif; font-weight:bold; font-size:1.25rem; text-align:center;
+    word-break:break-word; opacity:.9;
+  }
+  .scoops{display:flex; flex-direction:column-reverse; align-items:center}
+  .scoop{
+    width:100px; height:88px; border-radius:50% 50% 45% 45%; margin-bottom:-26px;
+    border:3px solid rgba(74,44,42,.15); animation:pop .3s ease;
+    display:flex; align-items:center; justify-content:center; font-size:1.6rem; transition:background .25s;
+  }
+  @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+  .cone{
+    width:0; height:0; border-left:45px solid transparent; border-right:45px solid transparent;
+    border-top:120px solid #e0a95c; position:relative;
+  }
+  .cone.waffle::after{
+    content:""; position:absolute; left:-45px; top:-120px; width:90px; height:120px;
+    background:
+      linear-gradient(45deg,transparent 46%,rgba(120,70,20,.35) 48%,rgba(120,70,20,.35) 52%,transparent 54%) 0 0/16px 16px,
+      linear-gradient(-45deg,transparent 46%,rgba(120,70,20,.35) 48%,rgba(120,70,20,.35) 52%,transparent 54%) 0 0/16px 16px;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+  }
+  .picker h2{margin-bottom:6px}
+  .picker > p{margin-bottom:14px}
+  .suggest-form{display:flex; flex-direction:column; gap:14px}
+  .suggest-form label, .suggest-form .field-label{font-weight:bold; display:flex; flex-direction:column; gap:6px; font-size:.95rem}
+  .suggest-form .chips{margin:0}
+  textarea{
+    padding:11px 14px; border-radius:12px; border:2px solid var(--choc); font-family:inherit; font-size:1rem;
+    resize:vertical; min-height:96px;
+  }
+  .suggestions{max-width:1000px; margin:0 auto; padding:0 20px 70px}
+  .suggestions h3{margin-bottom:14px; font-size:1.4rem}
+  .sug-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:16px}
+  .sug{background:#fff; border-radius:var(--card-radius); box-shadow:var(--shadow); padding:16px 18px; display:flex; flex-direction:column; gap:6px}
+  .sug h4{font-family:Georgia,serif; font-size:1.05rem}
+  .sug .ptag{align-self:flex-start; font-size:.7rem; font-weight:bold; padding:2px 10px; border-radius:999px; background:var(--pink-soft); border:1px solid var(--pink)}
+  .sug p{font-size:.88rem}
+  .sug-actions{display:flex; gap:8px; margin-top:6px}
+  .sug-actions .chip{font-size:.75rem; padding:4px 10px}
+
+  /* ---------- ABOUT ---------- */
+  .about{display:grid; grid-template-columns:260px 1fr; gap:40px; align-items:center}
+  @media(max-width:700px){.about{grid-template-columns:1fr; text-align:center}}
+  .avatar{
+    aspect-ratio:1/1; border-radius:50%; background:var(--pink-soft); border:6px solid var(--pink);
+    display:flex; align-items:center; justify-content:center; font-size:6rem; cursor:pointer;
+    overflow:hidden; position:relative; box-shadow:var(--shadow); max-width:260px; width:100%; margin:0 auto;
+  }
+  .avatar img{width:100%; height:100%; object-fit:cover}
+  .about h2{font-size:2.2rem; margin-bottom:12px; padding-right:70px}
+  .about p{margin-bottom:12px}
+  .stats{display:flex; gap:24px; margin-top:20px; flex-wrap:wrap}
+  @media(max-width:700px){.stats{justify-content:center} .about h2{padding:0}}
+  .stat b{display:block; font-size:1.8rem; font-family:Georgia,serif; color:#e0587f}
+
+  /* ---------- REVIEWS / INFO ---------- */
+  .reviews{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px}
+  .review{background:#fff; padding:22px; border-radius:var(--card-radius); box-shadow:var(--shadow); position:relative}
+  .review .x-rm{position:absolute; top:8px; right:8px}
+  .review .stars{color:#f5a623; letter-spacing:2px}
+  .review p{margin:8px 0; font-style:italic}
+  .review small{opacity:.7}
+
+  .info-wrap{background:var(--pink-soft); max-width:none; padding:0}
+  .info-grid{max-width:1000px; margin:0 auto; padding:70px 20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:30px}
+  .info-box{background:#fff; padding:24px; border-radius:var(--card-radius); box-shadow:var(--shadow)}
+  .info-box h3{margin-bottom:10px}
+  .hours{width:100%; border-collapse:collapse; font-size:.95rem}
+  .hours td{padding:4px 0; border-bottom:1px dotted rgba(74,44,42,.3)}
+  .hours td:nth-child(2){text-align:right; font-weight:bold}
+  .hours td.x-td{width:30px; text-align:right; border-bottom:none}
+  form{display:flex; flex-direction:column; gap:10px}
+  input[type=email],input[type=text]{
+    padding:11px 14px; border-radius:12px; border:2px solid var(--choc); font-family:inherit; font-size:1rem;
+  }
+  .msg{font-weight:bold; min-height:1.4em}
+
+  footer{background:var(--choc); color:#fff; text-align:center; padding:30px 20px; font-size:.9rem}
+  footer button{background:none; border:none; color:var(--butter); text-decoration:underline; cursor:pointer; font-family:inherit; font-size:.85rem; margin-top:8px}
+
+  @media (prefers-reduced-motion:reduce){
+    .hero,.float,.sprinkle,.badge,.wave,.hero .logo-mark{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="file:///Users/abradshaw/Downloads/code%20(2).html#top" class="logo-mark" style="--s:2.3rem" aria-label="Alex's Data Center"><span class="script">Alex's</span><span class="caps">DATA CENTER</span></a>
+  <ul>
+    <li><a href="file:///Users/abradshaw/Downloads/code%20(2).html#flavors">Flavors</a></li>
+    <li><a href="file:///Users/abradshaw/Downloads/code%20(2).html#build">Suggest a Cone</a></li>
+    <li><a href="file:///Users/abradshaw/Downloads/code%20(2).html#about">About</a></li>
+    <li><a href="file:///Users/abradshaw/Downloads/code%20(2).html#reviews">Reviews</a></li>
+    <li><a href="file:///Users/abradshaw/Downloads/code%20(2).html#visit">Visit</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="badge">100%<br>homemade<br>✦</div>
+  <div class="hero-inner">
+    <div class="logo-mark" style="--s:clamp(3.4rem,13vw,7.5rem)" role="img" aria-label="Alex's Data Center">
+      <span class="script">Alex's</span><span class="caps">DATA CENTER</span>
+    </div>
+    <h1>Small batch. Big scoops.</h1>
+    <p>Handcrafted ice cream tested in my kitchen, in flavors you'll definitely have opinions about.</p>
+    <a href="file:///Users/abradshaw/Downloads/code%20(2).html#flavors" class="btn">See the flavors</a>
+    <a href="file:///Users/abradshaw/Downloads/code%20(2).html#build" class="btn pink">Suggest a cone</a>
+  </div>
+  <svg class="wave" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#fff8ee" d="M0,40 C100,75 200,75 300,40 S500,5 600,40 S800,75 900,40 S1100,5 1200,40 V80 H0 Z"></path>
+  </svg>
+<i class="sprinkle" style="left: 54.6266%; background: rgb(255, 143, 177); animation-duration: 12.9002s; animation-delay: -2.96298s; --r: 55deg;"></i><i class="sprinkle" style="left: 77.9124%; background: rgb(143, 227, 207); animation-duration: 11.7975s; animation-delay: -7.03176s; --r: 335deg;"></i><i class="sprinkle" style="left: 22.7983%; background: rgb(255, 217, 138); animation-duration: 8.12813s; animation-delay: -13.9583s; --r: 243deg;"></i><i class="sprinkle" style="left: 2.03672%; background: rgb(183, 156, 240); animation-duration: 9.70105s; animation-delay: -14.6672s; --r: 105deg;"></i><i class="sprinkle" style="left: 45.2839%; background: rgb(255, 159, 107); animation-duration: 14.1743s; animation-delay: -4.85966s; --r: 108deg;"></i><i class="sprinkle" style="left: 37.3825%; background: rgb(124, 196, 255); animation-duration: 10.3868s; animation-delay: -10.0003s; --r: 112deg;"></i><i class="sprinkle" style="left: 41.3851%; background: rgb(255, 255, 255); animation-duration: 11.1111s; animation-delay: -3.91847s; --r: 197deg;"></i><i class="sprinkle" style="left: 87.4641%; background: rgb(255, 143, 177); animation-duration: 12.915s; animation-delay: -5.42561s; --r: 68deg;"></i><i class="sprinkle" style="left: 41.7176%; background: rgb(143, 227, 207); animation-duration: 11.7691s; animation-delay: -11.2622s; --r: 344deg;"></i><i class="sprinkle" style="left: 11.3479%; background: rgb(255, 217, 138); animation-duration: 6.02761s; animation-delay: -6.94839s; --r: 278deg;"></i><i class="sprinkle" style="left: 7.20764%; background: rgb(183, 156, 240); animation-duration: 13.0877s; animation-delay: -3.39056s; --r: 303deg;"></i><i class="sprinkle" style="left: 85.2079%; background: rgb(255, 159, 107); animation-duration: 9.95532s; animation-delay: -13.5164s; --r: 287deg;"></i><i class="sprinkle" style="left: 9.11807%; background: rgb(124, 196, 255); animation-duration: 8.38815s; animation-delay: -0.417335s; --r: 213deg;"></i><i class="sprinkle" style="left: 97.7316%; background: rgb(255, 255, 255); animation-duration: 10.594s; animation-delay: -5.9885s; --r: 25deg;"></i><i class="sprinkle" style="left: 45.0835%; background: rgb(255, 143, 177); animation-duration: 10.5979s; animation-delay: -13.0928s; --r: 39deg;"></i><i class="sprinkle" style="left: 21.2559%; background: rgb(143, 227, 207); animation-duration: 10.9209s; animation-delay: -7.26888s; --r: 189deg;"></i><i class="sprinkle" style="left: 87.1244%; background: rgb(255, 217, 138); animation-duration: 8.47716s; animation-delay: -1.54318s; --r: 172deg;"></i><i class="sprinkle" style="left: 51.232%; background: rgb(183, 156, 240); animation-duration: 8.76493s; animation-delay: -12.2106s; --r: 340deg;"></i><i class="sprinkle" style="left: 43.7695%; background: rgb(255, 159, 107); animation-duration: 13.7538s; animation-delay: -14.586s; --r: 273deg;"></i><i class="sprinkle" style="left: 27.3404%; background: rgb(124, 196, 255); animation-duration: 14.2268s; animation-delay: -8.19087s; --r: 131deg;"></i><i class="sprinkle" style="left: 59.5383%; background: rgb(255, 255, 255); animation-duration: 9.43451s; animation-delay: -3.59403s; --r: 255deg;"></i><i class="sprinkle" style="left: 6.78278%; background: rgb(255, 143, 177); animation-duration: 13.176s; animation-delay: -3.27827s; --r: 5deg;"></i><i class="sprinkle" style="left: 48.184%; background: rgb(143, 227, 207); animation-duration: 6.73803s; animation-delay: -13.4997s; --r: 204deg;"></i><i class="sprinkle" style="left: 5.26922%; background: rgb(255, 217, 138); animation-duration: 9.00433s; animation-delay: -9.6008s; --r: 358deg;"></i><i class="sprinkle" style="left: 94.4496%; background: rgb(183, 156, 240); animation-duration: 10.2607s; animation-delay: -2.67483s; --r: 113deg;"></i><i class="sprinkle" style="left: 65.6017%; background: rgb(255, 159, 107); animation-duration: 9.60619s; animation-delay: -4.96766s; --r: 188deg;"></i><i class="sprinkle" style="left: 3.33846%; background: rgb(124, 196, 255); animation-duration: 14.084s; animation-delay: -3.21104s; --r: 130deg;"></i><i class="sprinkle" style="left: 37.439%; background: rgb(255, 255, 255); animation-duration: 6.56289s; animation-delay: -9.11887s; --r: 331deg;"></i><i class="sprinkle" style="left: 93.7088%; background: rgb(255, 143, 177); animation-duration: 10.7229s; animation-delay: -7.20733s; --r: 107deg;"></i><i class="sprinkle" style="left: 98.2747%; background: rgb(143, 227, 207); animation-duration: 10.6369s; animation-delay: -10.0692s; --r: 88deg;"></i><i class="sprinkle" style="left: 8.6146%; background: rgb(255, 217, 138); animation-duration: 14.9865s; animation-delay: -0.808329s; --r: 157deg;"></i><i class="sprinkle" style="left: 53.5154%; background: rgb(183, 156, 240); animation-duration: 10.3467s; animation-delay: -3.69991s; --r: 299deg;"></i><i class="sprinkle" style="left: 57.6073%; background: rgb(255, 159, 107); animation-duration: 11.607s; animation-delay: -6.95282s; --r: 188deg;"></i><i class="sprinkle" style="left: 88.8129%; background: rgb(124, 196, 255); animation-duration: 6.8663s; animation-delay: -5.26534s; --r: 129deg;"></i><i class="sprinkle" style="left: 89.9629%; background: rgb(255, 255, 255); animation-duration: 13.4703s; animation-delay: -7.65787s; --r: 74deg;"></i><i class="sprinkle" style="left: 67.6091%; background: rgb(255, 143, 177); animation-duration: 8.05977s; animation-delay: -14.1445s; --r: 2deg;"></i><i class="sprinkle" style="left: 34.3088%; background: rgb(143, 227, 207); animation-duration: 10.3769s; animation-delay: -10.9269s; --r: 296deg;"></i><i class="sprinkle" style="left: 79.7296%; background: rgb(255, 217, 138); animation-duration: 9.82655s; animation-delay: -6.50992s; --r: 291deg;"></i><i class="sprinkle" style="left: 39.3429%; background: rgb(183, 156, 240); animation-duration: 6.81289s; animation-delay: -5.28732s; --r: 259deg;"></i><i class="sprinkle" style="left: 97.1123%; background: rgb(255, 159, 107); animation-duration: 11.5909s; animation-delay: -12.3915s; --r: 133deg;"></i><i class="sprinkle" style="left: 13.7311%; background: rgb(124, 196, 255); animation-duration: 8.64575s; animation-delay: -6.80043s; --r: 221deg;"></i><i class="sprinkle" style="left: 32.4567%; background: rgb(255, 255, 255); animation-duration: 9.81714s; animation-delay: -13.9535s; --r: 100deg;"></i><i class="sprinkle" style="left: 5.85766%; background: rgb(255, 143, 177); animation-duration: 13.2537s; animation-delay: -12.483s; --r: 256deg;"></i><i class="sprinkle" style="left: 21.2759%; background: rgb(143, 227, 207); animation-duration: 13.8832s; animation-delay: -2.47119s; --r: 236deg;"></i><i class="sprinkle" style="left: 22.4102%; background: rgb(255, 217, 138); animation-duration: 7.12361s; animation-delay: -13.9575s; --r: 44deg;"></i><i class="sprinkle" style="left: 72.0397%; background: rgb(183, 156, 240); animation-duration: 11.2841s; animation-delay: -10.7503s; --r: 38deg;"></i><i class="sprinkle" style="left: 25.0462%; background: rgb(255, 159, 107); animation-duration: 13.2717s; animation-delay: -5.83057s; --r: 35deg;"></i><i class="sprinkle" style="left: 12.8039%; background: rgb(124, 196, 255); animation-duration: 7.36702s; animation-delay: -9.31947s; --r: 130deg;"></i><i class="sprinkle" style="left: 18.1892%; background: rgb(255, 255, 255); animation-duration: 6.18972s; animation-delay: -3.60919s; --r: 32deg;"></i><i class="sprinkle" style="left: 69.4175%; background: rgb(255, 143, 177); animation-duration: 7.4378s; animation-delay: -4.9877s; --r: 297deg;"></i><span class="float" style="left: 81.3426%; top: 29.6573%; font-size: 2.42678rem; animation-duration: 4.67359s; animation-delay: -5.28128s;">🍓</span><span class="float" style="left: 20.0946%; top: 47.2092%; font-size: 3.05264rem; animation-duration: 7.65218s; animation-delay: -1.02817s;">🍫</span><span class="float" style="left: 88.5101%; top: 52.1077%; font-size: 3.82825rem; animation-duration: 5.1048s; animation-delay: -0.385299s;">🍋</span><span class="float" style="left: 19.2352%; top: 10.4317%; font-size: 1.86816rem; animation-duration: 6.76975s; animation-delay: -0.468692s;">🍪</span><span class="float" style="left: 92.9355%; top: 71.3661%; font-size: 3.32288rem; animation-duration: 4.53552s; animation-delay: -4.47809s;">🍒</span><span class="float" style="left: 4.56757%; top: 10.231%; font-size: 3.04573rem; animation-duration: 4.38378s; animation-delay: -0.786444s;">🥭</span><span class="float" style="left: 82.7047%; top: 49.5037%; font-size: 2.25059rem; animation-duration: 7.03497s; animation-delay: -5.34085s;">🍦</span><span class="float" style="left: 5.49804%; top: 52.779%; font-size: 2.4028rem; animation-duration: 5.29528s; animation-delay: -4.70329s;">🍨</span><span class="float" style="left: 89.2886%; top: 71.197%; font-size: 2.18935rem; animation-duration: 7.44447s; animation-delay: -1.54704s;">🧁</span><span class="float" style="left: 4.0784%; top: 72.1913%; font-size: 3.28514rem; animation-duration: 4.28607s; animation-delay: -4.63292s;">⭐</span><span class="float" style="left: 79.0701%; top: 37.4553%; font-size: 4.09347rem; animation-duration: 5.01529s; animation-delay: -5.63627s;">🌿</span><span class="float" style="left: 2.82366%; top: 24.9578%; font-size: 1.96464rem; animation-duration: 5.93553s; animation-delay: -3.15901s;">🍯</span><span class="float" style="left: 87.4101%; top: 8.3938%; font-size: 2.1591rem; animation-duration: 4.70204s; animation-delay: -4.52964s;">🥜</span><span class="float" style="left: 19.394%; top: 49.7975%; font-size: 2.492rem; animation-duration: 7.39576s; animation-delay: -3.67568s;">🫐</span><i class="sprinkle" style="left: 42.2033%; background: rgb(255, 143, 177); animation-duration: 10.1692s; animation-delay: -10.5458s; --r: 80deg;"></i><i class="sprinkle" style="left: 97.5602%; background: rgb(143, 227, 207); animation-duration: 7.70909s; animation-delay: -0.878658s; --r: 133deg;"></i><i class="sprinkle" style="left: 66.5036%; background: rgb(255, 217, 138); animation-duration: 13.4537s; animation-delay: -0.678354s; --r: 71deg;"></i><i class="sprinkle" style="left: 3.38985%; background: rgb(183, 156, 240); animation-duration: 6.16984s; animation-delay: -14.6581s; --r: 60deg;"></i><i class="sprinkle" style="left: 25.3409%; background: rgb(255, 159, 107); animation-duration: 10.0632s; animation-delay: -10.5156s; --r: 297deg;"></i><i class="sprinkle" style="left: 14.8766%; background: rgb(124, 196, 255); animation-duration: 12.2672s; animation-delay: -10.408s; --r: 109deg;"></i><i class="sprinkle" style="left: 51.1509%; background: rgb(255, 255, 255); animation-duration: 13.9774s; animation-delay: -1.60629s; --r: 128deg;"></i><i class="sprinkle" style="left: 44.7832%; background: rgb(255, 143, 177); animation-duration: 13.2786s; animation-delay: -1.18622s; --r: 70deg;"></i><i class="sprinkle" style="left: 83.2952%; background: rgb(143, 227, 207); animation-duration: 9.38666s; animation-delay: -1.00102s; --r: 211deg;"></i><i class="sprinkle" style="left: 98.9189%; background: rgb(255, 217, 138); animation-duration: 8.29117s; animation-delay: -14.7573s; --r: 86deg;"></i><i class="sprinkle" style="left: 72.6486%; background: rgb(183, 156, 240); animation-duration: 9.70628s; animation-delay: -4.63675s; --r: 80deg;"></i><i class="sprinkle" style="left: 67.2467%; background: rgb(255, 159, 107); animation-duration: 10.2365s; animation-delay: -7.71151s; --r: 107deg;"></i><i class="sprinkle" style="left: 7.06078%; background: rgb(124, 196, 255); animation-duration: 6.77771s; animation-delay: -9.32664s; --r: 10deg;"></i><i class="sprinkle" style="left: 9.85907%; background: rgb(255, 255, 255); animation-duration: 14.7447s; animation-delay: -6.27021s; --r: 229deg;"></i><i class="sprinkle" style="left: 54.7065%; background: rgb(255, 143, 177); animation-duration: 11.4685s; animation-delay: -3.68143s; --r: 244deg;"></i><i class="sprinkle" style="left: 90.1017%; background: rgb(143, 227, 207); animation-duration: 11.1936s; animation-delay: -13.6941s; --r: 202deg;"></i><i class="sprinkle" style="left: 67.5783%; background: rgb(255, 217, 138); animation-duration: 10.9123s; animation-delay: -12.2263s; --r: 174deg;"></i><i class="sprinkle" style="left: 72.2542%; background: rgb(183, 156, 240); animation-duration: 7.93111s; animation-delay: -6.4686s; --r: 171deg;"></i><i class="sprinkle" style="left: 0.655339%; background: rgb(255, 159, 107); animation-duration: 9.24658s; animation-delay: -0.900001s; --r: 336deg;"></i><i class="sprinkle" style="left: 67.0712%; background: rgb(124, 196, 255); animation-duration: 6.21771s; animation-delay: -0.606461s; --r: 258deg;"></i><i class="sprinkle" style="left: 45.2161%; background: rgb(255, 255, 255); animation-duration: 13.4716s; animation-delay: -8.528s; --r: 229deg;"></i><i class="sprinkle" style="left: 78.3194%; background: rgb(255, 143, 177); animation-duration: 6.67184s; animation-delay: -5.71322s; --r: 179deg;"></i><i class="sprinkle" style="left: 74.5168%; background: rgb(143, 227, 207); animation-duration: 9.95981s; animation-delay: -0.352992s; --r: 241deg;"></i><i class="sprinkle" style="left: 85.3413%; background: rgb(255, 217, 138); animation-duration: 11.248s; animation-delay: -9.49566s; --r: 337deg;"></i><i class="sprinkle" style="left: 90.7397%; background: rgb(183, 156, 240); animation-duration: 14.5205s; animation-delay: -12.9469s; --r: 322deg;"></i><i class="sprinkle" style="left: 53.4832%; background: rgb(255, 159, 107); animation-duration: 11.9396s; animation-delay: -0.301594s; --r: 344deg;"></i><i class="sprinkle" style="left: 42.2134%; background: rgb(124, 196, 255); animation-duration: 8.72683s; animation-delay: -4.98137s; --r: 60deg;"></i><i class="sprinkle" style="left: 17.6194%; background: rgb(255, 255, 255); animation-duration: 11.2116s; animation-delay: -2.43034s; --r: 232deg;"></i><i class="sprinkle" style="left: 89.7425%; background: rgb(255, 143, 177); animation-duration: 7.87059s; animation-delay: -9.77619s; --r: 238deg;"></i><i class="sprinkle" style="left: 48.5917%; background: rgb(143, 227, 207); animation-duration: 9.82245s; animation-delay: -8.16419s; --r: 198deg;"></i><i class="sprinkle" style="left: 18.5884%; background: rgb(255, 217, 138); animation-duration: 10.8427s; animation-delay: -10.6629s; --r: 175deg;"></i><i class="sprinkle" style="left: 71.0916%; background: rgb(183, 156, 240); animation-duration: 11.7672s; animation-delay: -10.3839s; --r: 279deg;"></i><i class="sprinkle" style="left: 6.66508%; background: rgb(255, 159, 107); animation-duration: 12.1733s; animation-delay: -11.5979s; --r: 328deg;"></i><i class="sprinkle" style="left: 8.69474%; background: rgb(124, 196, 255); animation-duration: 9.22112s; animation-delay: -1.99669s; --r: 224deg;"></i><i class="sprinkle" style="left: 95.1353%; background: rgb(255, 255, 255); animation-duration: 14.3116s; animation-delay: -9.1321s; --r: 95deg;"></i><i class="sprinkle" style="left: 67.39%; background: rgb(255, 143, 177); animation-duration: 12.9501s; animation-delay: -14.404s; --r: 51deg;"></i><i class="sprinkle" style="left: 15.0578%; background: rgb(143, 227, 207); animation-duration: 6.10924s; animation-delay: -2.35523s; --r: 179deg;"></i><i class="sprinkle" style="left: 12.7988%; background: rgb(255, 217, 138); animation-duration: 14.4555s; animation-delay: -8.94511s; --r: 38deg;"></i><i class="sprinkle" style="left: 50.9893%; background: rgb(183, 156, 240); animation-duration: 6.68014s; animation-delay: -0.9043s; --r: 119deg;"></i><i class="sprinkle" style="left: 60.6028%; background: rgb(255, 159, 107); animation-duration: 6.26939s; animation-delay: -6.41902s; --r: 254deg;"></i><i class="sprinkle" style="left: 54.7686%; background: rgb(124, 196, 255); animation-duration: 8.0313s; animation-delay: -0.0812758s; --r: 196deg;"></i><i class="sprinkle" style="left: 76.3363%; background: rgb(255, 255, 255); animation-duration: 8.7704s; animation-delay: -11.696s; --r: 107deg;"></i><i class="sprinkle" style="left: 43.9706%; background: rgb(255, 143, 177); animation-duration: 7.14242s; animation-delay: -8.05912s; --r: 195deg;"></i><i class="sprinkle" style="left: 66.7391%; background: rgb(143, 227, 207); animation-duration: 14.8719s; animation-delay: -1.8952s; --r: 315deg;"></i><i class="sprinkle" style="left: 20.163%; background: rgb(255, 217, 138); animation-duration: 9.65985s; animation-delay: -5.91843s; --r: 191deg;"></i><i class="sprinkle" style="left: 38.0964%; background: rgb(183, 156, 240); animation-duration: 9.77757s; animation-delay: -14.7336s; --r: 359deg;"></i><i class="sprinkle" style="left: 60.1171%; background: rgb(255, 159, 107); animation-duration: 8.11529s; animation-delay: -7.58539s; --r: 103deg;"></i><i class="sprinkle" style="left: 63.0625%; background: rgb(124, 196, 255); animation-duration: 12.4145s; animation-delay: -12.8397s; --r: 144deg;"></i><i class="sprinkle" style="left: 92.4451%; background: rgb(255, 255, 255); animation-duration: 8.97473s; animation-delay: -12.9426s; --r: 243deg;"></i><i class="sprinkle" style="left: 41.9843%; background: rgb(255, 143, 177); animation-duration: 11.9291s; animation-delay: -2.75973s; --r: 151deg;"></i><span class="float" style="left: 88.9615%; top: 63.5441%; font-size: 3.29883rem; animation-duration: 5.56392s; animation-delay: -0.376393s;">🍓</span><span class="float" style="left: 5.66585%; top: 60.0666%; font-size: 2.867rem; animation-duration: 5.47248s; animation-delay: -0.295068s;">🍫</span><span class="float" style="left: 83.2015%; top: 54.1599%; font-size: 2.22989rem; animation-duration: 7.13883s; animation-delay: -4.48062s;">🍋</span><span class="float" style="left: 3.16274%; top: 15.7152%; font-size: 3.82364rem; animation-duration: 5.03339s; animation-delay: -0.736143s;">🍪</span><span class="float" style="left: 80.9358%; top: 57.8283%; font-size: 2.5724rem; animation-duration: 4.62115s; animation-delay: -0.152248s;">🍒</span><span class="float" style="left: 5.53099%; top: 21.0167%; font-size: 2.43004rem; animation-duration: 7.35959s; animation-delay: -3.68258s;">🥭</span><span class="float" style="left: 79.2602%; top: 47.8864%; font-size: 3.72519rem; animation-duration: 6.55471s; animation-delay: -1.87284s;">🍦</span><span class="float" style="left: 17.1568%; top: 26.9859%; font-size: 2.73461rem; animation-duration: 6.0991s; animation-delay: -4.63554s;">🍨</span><span class="float" style="left: 92.3784%; top: 56.6437%; font-size: 4.18994rem; animation-duration: 5.97397s; animation-delay: -1.87143s;">🧁</span><span class="float" style="left: 13.0614%; top: 17.3505%; font-size: 3.68648rem; animation-duration: 4.01961s; animation-delay: -0.131908s;">⭐</span><span class="float" style="left: 86.0517%; top: 16.2838%; font-size: 2.68689rem; animation-duration: 7.89081s; animation-delay: -1.80304s;">🌿</span><span class="float" style="left: 16.5029%; top: 70.2524%; font-size: 2.35651rem; animation-duration: 5.23037s; animation-delay: -2.47502s;">🍯</span><span class="float" style="left: 87.5356%; top: 49.4322%; font-size: 3.68932rem; animation-duration: 5.5352s; animation-delay: -5.84579s;">🥜</span><span class="float" style="left: 4.24573%; top: 36.569%; font-size: 3.18379rem; animation-duration: 5.41109s; animation-delay: -2.32492s;">🫐</span></header>
+
+<section id="flavors">
+  <h2 class="section-title">Our Flavors</h2>
+  <p class="section-sub">The test kitchen lineup. ⭐ = personal favorite.</p>
+  <div class="hint">✏️ Click a picture to upload (or drag one on) · ⭐ to favorite · click the sticker to switch it · everything is editable</div>
+  <div class="filters chips" id="filters" style="justify-content:center">
+    <button class="chip active" data-filter="all">All</button>
+    <button class="chip" data-filter="fav">⭐ Favorites</button>
+    <button class="chip" data-filter="wip">🚧 WIP</button>
+    <button class="chip" data-filter="done">✅ Tried &amp; True</button>
+  </div>
+  <div class="grid" id="flavorGrid">
+  <article class="card fav" data-id="d0">
+    <div class="img-box" data-act="upload" style="background:#fff1c9">
+      <span class="emoji">🍦</span>
+      <button class="tag wip" data-act="tag" title="Click to change sticker">🚧 WIP</button>
+      <button class="star on" data-act="fav" title="Personal favorite">★</button>
+      <div class="upload-overlay">📷 Upload picture
+        
+      </div>
+    </div>
+    <button class="del" data-act="delete" title="Delete flavor">✕</button>
+    <div class="info">
+      <h3 contenteditable="true" spellcheck="false" data-field="name" data-ph="Flavor name">Killa Vanilla</h3>
+      <ul class="ings">
+        <li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="0" data-ph="ingredient">Vanilla Extract</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="0" data-ph="amount">1 tbsp</span>
+          <button class="irm" data-act="rmIng" data-i="0" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="1" data-ph="ingredient">Milk</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="1" data-ph="amount">1 cup</span>
+          <button class="irm" data-act="rmIng" data-i="1" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="2" data-ph="ingredient">Vanilla Protein Powder</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="2" data-ph="amount">1 scoop</span>
+          <button class="irm" data-act="rmIng" data-i="2" title="Remove ingredient">✕</button>
+        </li>
+      </ul>
+      <button class="add-ing" data-act="addIng">＋ ingredient</button>
+    </div>
+  </article>
+  <article class="card fav" data-id="d1">
+    <div class="img-box" data-act="upload" style="background:#c89a85">
+      <span class="emoji">🍫</span>
+      <button class="tag done" data-act="tag" title="Click to change sticker">✅ Tried &amp; True</button>
+      <button class="star on" data-act="fav" title="Personal favorite">★</button>
+      <div class="upload-overlay">📷 Upload picture
+        
+      </div>
+    </div>
+    <button class="del" data-act="delete" title="Delete flavor">✕</button>
+    <div class="info">
+      <h3 contenteditable="true" spellcheck="false" data-field="name" data-ph="Flavor name">Hershey's Chocolate</h3>
+      <ul class="ings">
+        <li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="0" data-ph="ingredient">Hershey's Chocolate Syrup</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="0" data-ph="amount">1 tbsp</span>
+          <button class="irm" data-act="rmIng" data-i="0" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="1" data-ph="ingredient">Milk</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="1" data-ph="amount">1 cup</span>
+          <button class="irm" data-act="rmIng" data-i="1" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="2" data-ph="ingredient">Chocolate Protein Powder</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="2" data-ph="amount">1 scoop</span>
+          <button class="irm" data-act="rmIng" data-i="2" title="Remove ingredient">✕</button>
+        </li>
+      </ul>
+      <button class="add-ing" data-act="addIng">＋ ingredient</button>
+    </div>
+  </article>
+  <article class="card " data-id="d2">
+    <div class="img-box" data-act="upload" style="background:#ffc2d1">
+      <span class="emoji">🍓</span>
+      <button class="tag wip" data-act="tag" title="Click to change sticker">🚧 WIP</button>
+      <button class="star " data-act="fav" title="Personal favorite">☆</button>
+      <div class="upload-overlay">📷 Upload picture
+        
+      </div>
+    </div>
+    <button class="del" data-act="delete" title="Delete flavor">✕</button>
+    <div class="info">
+      <h3 contenteditable="true" spellcheck="false" data-field="name" data-ph="Flavor name">Strawberry Cheesecake</h3>
+      <ul class="ings">
+        <li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="0" data-ph="ingredient">Strawberry Pudding</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="0" data-ph="amount">7 grams</span>
+          <button class="irm" data-act="rmIng" data-i="0" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="1" data-ph="ingredient">Heavy cream</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="1" data-ph="amount">1 1/2 cups</span>
+          <button class="irm" data-act="rmIng" data-i="1" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="2" data-ph="ingredient">Whole milk</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="2" data-ph="amount">1 cup</span>
+          <button class="irm" data-act="rmIng" data-i="2" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="3" data-ph="ingredient">Sugar</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="3" data-ph="amount">1/2 cup</span>
+          <button class="irm" data-act="rmIng" data-i="3" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="4" data-ph="ingredient">Lemon juice</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="4" data-ph="amount">1 tbsp</span>
+          <button class="irm" data-act="rmIng" data-i="4" title="Remove ingredient">✕</button>
+        </li>
+      </ul>
+      <button class="add-ing" data-act="addIng">＋ ingredient</button>
+    </div>
+  </article>
+  <article class="card " data-id="d3">
+    <div class="img-box" data-act="upload" style="background:#b8f0dc">
+      <span class="emoji">🌿</span>
+      <button class="tag wip" data-act="tag" title="Click to change sticker">🚧 WIP</button>
+      <button class="star " data-act="fav" title="Personal favorite">☆</button>
+      <div class="upload-overlay">📷 Upload picture
+        
+      </div>
+    </div>
+    <button class="del" data-act="delete" title="Delete flavor">✕</button>
+    <div class="info">
+      <h3 contenteditable="true" spellcheck="false" data-field="name" data-ph="Flavor name">Mint Choc Chip</h3>
+      <ul class="ings">
+        <li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="0" data-ph="ingredient">Heavy cream</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="0" data-ph="amount">2 cups</span>
+          <button class="irm" data-act="rmIng" data-i="0" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="1" data-ph="ingredient">Whole milk</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="1" data-ph="amount">1 cup</span>
+          <button class="irm" data-act="rmIng" data-i="1" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="2" data-ph="ingredient">Sugar</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="2" data-ph="amount">3/4 cup</span>
+          <button class="irm" data-act="rmIng" data-i="2" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="3" data-ph="ingredient">Fresh mint leaves</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="3" data-ph="amount">1/2 cup</span>
+          <button class="irm" data-act="rmIng" data-i="3" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="4" data-ph="ingredient">Dark choc chips</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="4" data-ph="amount">1/2 cup</span>
+          <button class="irm" data-act="rmIng" data-i="4" title="Remove ingredient">✕</button>
+        </li>
+      </ul>
+      <button class="add-ing" data-act="addIng">＋ ingredient</button>
+    </div>
+  </article>
+  <article class="card fav" data-id="d4">
+    <div class="img-box" data-act="upload" style="background:#f5c27a">
+      <span class="emoji">🧂</span>
+      <button class="tag done" data-act="tag" title="Click to change sticker">✅ Tried &amp; True</button>
+      <button class="star on" data-act="fav" title="Personal favorite">★</button>
+      <div class="upload-overlay">📷 Upload picture
+        
+      </div>
+    </div>
+    <button class="del" data-act="delete" title="Delete flavor">✕</button>
+    <div class="info">
+      <h3 contenteditable="true" spellcheck="false" data-field="name" data-ph="Flavor name">Cinnamon Swirl</h3>
+      <ul class="ings">
+        <li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="0" data-ph="ingredient">Ground Cinnamon</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="0" data-ph="amount">1 tsp</span>
+          <button class="irm" data-act="rmIng" data-i="0" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="1" data-ph="ingredient">Milk</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="1" data-ph="amount">1 cup</span>
+          <button class="irm" data-act="rmIng" data-i="1" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="2" data-ph="ingredient">Vanilla Protein Powder</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="2" data-ph="amount">1/3 cup</span>
+          <button class="irm" data-act="rmIng" data-i="2" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="3" data-ph="ingredient">Sugar</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="3" data-ph="amount">1 tbsp</span>
+          <button class="irm" data-act="rmIng" data-i="3" title="Remove ingredient">✕</button>
+        </li>
+      </ul>
+      <button class="add-ing" data-act="addIng">＋ ingredient</button>
+    </div>
+  </article>
+  <article class="card " data-id="d5">
+    <div class="img-box" data-act="upload" style="background:#ffd36b">
+      <span class="emoji">🥭</span>
+      <button class="tag done" data-act="tag" title="Click to change sticker">✅ Tried &amp; True</button>
+      <button class="star " data-act="fav" title="Personal favorite">☆</button>
+      <div class="upload-overlay">📷 Upload picture
+        
+      </div>
+    </div>
+    <button class="del" data-act="delete" title="Delete flavor">✕</button>
+    <div class="info">
+      <h3 contenteditable="true" spellcheck="false" data-field="name" data-ph="Flavor name">Chocolate Banana</h3>
+      <ul class="ings">
+        <li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="0" data-ph="ingredient">Banana Cream Pudding</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="0" data-ph="amount">7 grams</span>
+          <button class="irm" data-act="rmIng" data-i="0" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="1" data-ph="ingredient">Milk</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="1" data-ph="amount">1 cup</span>
+          <button class="irm" data-act="rmIng" data-i="1" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="2" data-ph="ingredient">Chocolate Protein Powder</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="2" data-ph="amount">1 scoop</span>
+          <button class="irm" data-act="rmIng" data-i="2" title="Remove ingredient">✕</button>
+        </li>
+      </ul>
+      <button class="add-ing" data-act="addIng">＋ ingredient</button>
+    </div>
+  </article>
+  <article class="card " data-id="d6">
+    <div class="img-box" data-act="upload" style="background:#e8cfa8">
+      <span class="emoji">🍪</span>
+      <button class="tag none" data-act="tag" title="Click to change sticker">+ sticker</button>
+      <button class="star " data-act="fav" title="Personal favorite">☆</button>
+      <div class="upload-overlay">📷 Upload picture
+        
+      </div>
+    </div>
+    <button class="del" data-act="delete" title="Delete flavor">✕</button>
+    <div class="info">
+      <h3 contenteditable="true" spellcheck="false" data-field="name" data-ph="Flavor name">Cookie Dough Chaos</h3>
+      <ul class="ings">
+        <li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="0" data-ph="ingredient">Heavy cream</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="0" data-ph="amount">2 cups</span>
+          <button class="irm" data-act="rmIng" data-i="0" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="1" data-ph="ingredient">Whole milk</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="1" data-ph="amount">1 cup</span>
+          <button class="irm" data-act="rmIng" data-i="1" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="2" data-ph="ingredient">Edible cookie dough</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="2" data-ph="amount">1 cup</span>
+          <button class="irm" data-act="rmIng" data-i="2" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="3" data-ph="ingredient">Brown sugar</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="3" data-ph="amount">1/4 cup</span>
+          <button class="irm" data-act="rmIng" data-i="3" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="4" data-ph="ingredient">Choc chips</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="4" data-ph="amount">2 tbsp</span>
+          <button class="irm" data-act="rmIng" data-i="4" title="Remove ingredient">✕</button>
+        </li>
+      </ul>
+      <button class="add-ing" data-act="addIng">＋ ingredient</button>
+    </div>
+  </article>
+  <article class="card " data-id="d7">
+    <div class="img-box" data-act="upload" style="background:#dcc8f5">
+      <span class="emoji">💜</span>
+      <button class="tag wip" data-act="tag" title="Click to change sticker">🚧 WIP</button>
+      <button class="star " data-act="fav" title="Personal favorite">☆</button>
+      <div class="upload-overlay">📷 Upload picture
+        
+      </div>
+    </div>
+    <button class="del" data-act="delete" title="Delete flavor">✕</button>
+    <div class="info">
+      <h3 contenteditable="true" spellcheck="false" data-field="name" data-ph="Flavor name">Lavender Honey</h3>
+      <ul class="ings">
+        <li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="0" data-ph="ingredient">Heavy cream</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="0" data-ph="amount">2 cups</span>
+          <button class="irm" data-act="rmIng" data-i="0" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="1" data-ph="ingredient">Whole milk</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="1" data-ph="amount">1 cup</span>
+          <button class="irm" data-act="rmIng" data-i="1" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="2" data-ph="ingredient">Local honey</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="2" data-ph="amount">3 tbsp</span>
+          <button class="irm" data-act="rmIng" data-i="2" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="3" data-ph="ingredient">Sugar</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="3" data-ph="amount">1/4 cup</span>
+          <button class="irm" data-act="rmIng" data-i="3" title="Remove ingredient">✕</button>
+        </li><li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="4" data-ph="ingredient">Dried lavender</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="4" data-ph="amount">1 tbsp</span>
+          <button class="irm" data-act="rmIng" data-i="4" title="Remove ingredient">✕</button>
+        </li>
+      </ul>
+      <button class="add-ing" data-act="addIng">＋ ingredient</button>
+    </div>
+  </article><button class="card add-card" data-act="add"><div><span>＋</span>Add a flavor</div></button></div>
+</section>
+
+<div class="builder-wrap" id="build">
+  <div class="builder">
+    <div class="cone-stage">
+      <div class="preview-name" id="previewName">Your cone name</div>
+      <div class="scoops"><div class="scoop" id="previewScoop" style="background: rgb(255, 209, 224);">🍨</div></div>
+      <div class="cone waffle"></div>
+    </div>
+    <div class="picker">
+      <h2>Suggest a Cone 🍨</h2>
+      <p>Got an idea for a flavor? Tell me about it and it goes in the suggestion box.</p>
+      <form class="suggest-form" id="suggestForm">
+        <label>Name of your cone
+          <input type="text" id="sName" maxlength="60" placeholder="e.g. Peanut Butter Banana Gains" required="">
+        </label>
+        <div class="field-label">Protein powder flavor
+          <div class="chips" id="proteinSeg">
+            <button type="button" class="chip" data-p="Chocolate">🍫 Chocolate</button>
+            <button type="button" class="chip" data-p="Vanilla">🍦 Vanilla</button>
+            <button type="button" class="chip active" data-p="None">🚫 None</button>
+          </div>
+        </div>
+        <label>What does this taste like / contain?
+          <textarea id="sDesc" maxlength="400" placeholder="e.g. Tastes like a milkshake. Frozen banana, peanut butter, a pinch of salt…" required=""></textarea>
+        </label>
+        <div><button class="btn" type="submit" style="margin:0">Submit suggestion</button></div>
+        <p class="msg" id="sMsg"></p>
+      </form>
+    </div>
+  </div>
+  <div class="suggestions" id="suggestions"><h3>💡 Suggestion box</h3><div class="sug-grid">
+        <div class="sug" data-id="s0">
+          <span class="ptag">Protein powder: Chocolate</span>
+          <h4>Cookies &amp; Cream Gains</h4>
+          <p>Tastes like an Oreo milkshake. Chocolate protein, crushed cookies, frozen banana, splash of milk.</p>
+          <div class="sug-actions">
+            <button class="chip" data-sact="promote">＋ Add to flavors</button>
+            <button class="chip" data-sact="del" title="Delete">✕</button>
+          </div>
+        </div></div></div>
+</div>
+
+<section id="about">
+  <div class="about">
+    <div class="avatar" id="avatar" title="Click to upload a photo"><span>🧑‍🍳</span></div>
+    <input type="file" id="avatarInput" accept="image/png,image/jpeg" hidden="">
+    <div class="editbox editing" data-edit="about">
+      <button class="edit-btn" type="button">✓ Save</button>
+      <div class="edit-body">
+        <h2 spellcheck="false" contenteditable="true">Hi, I'm Alex!</h2>
+        <p spellcheck="false" contenteditable="true">Alex's started as a kitchen experiment and a very loud ice cream machine. Now it's a never-ending quest for the perfect scoop.</p>
+        <p spellcheck="false" contenteditable="true">Every flavor gets tested, tweaked, and tested again. If it's still a <b>🚧 WIP</b>, it's being worked on. Once it earns the <b>✅ Tried &amp; True</b> sticker, it's officially approved.</p>
+        <p spellcheck="false" contenteditable="true"><em>(This is placeholder text. Swap in your own story!)</em></p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="statTotal">8</b>flavors</div>
+        <div class="stat"><b id="statFav">3</b>personal favorites</div>
+        <div class="stat"><b id="statDone">3</b>tried &amp; true</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="editbox" data-edit="reviews">
+    <button class="edit-btn" type="button">✏️ Edit</button>
+    <div class="edit-body">
+      <h2 class="section-title">Happy Customers</h2>
+      <p class="section-sub">Totally real reviews from totally real people.</p>
+      <div class="reviews">
+        <div class="review"><div class="stars">★★★★★</div><p>"The salted caramel changed my life. My dentist is concerned but I'm thrilled."</p><small>— Dana R.</small></div>
+        <div class="review"><div class="stars">★★★★★</div><p>"Mango sunshine tastes like an actual mango. Which, you'd think, would be normal."</p><small>— Priya S.</small></div>
+        <div class="review"><div class="stars">★★★★☆</div><p>"Line gets long on Saturdays, but the cookie dough is worth every minute."</p><small>— Tom B.</small></div>
+      </div>
+    </div>
+    <button class="add-btn" type="button" data-add="review">＋ Add a review</button>
+  </div>
+</section>
+
+<div class="info-wrap" id="visit">
+  <div class="info-grid">
+    <div class="info-box editbox" data-edit="hours">
+      <button class="edit-btn" type="button">✏️ Edit</button>
+      <div class="edit-body">
+        <h3 spellcheck="false">🕒 Hours</h3>
+        <table class="hours"><tbody>
+          <tr><td spellcheck="false">Mon – Thu</td><td spellcheck="false">12 – 9 pm</td></tr>
+          <tr><td spellcheck="false">Fri – Sat</td><td spellcheck="false">11 – 11 pm</td></tr>
+          <tr><td spellcheck="false">Sunday</td><td spellcheck="false">11 – 8 pm</td></tr>
+        </tbody></table>
+      </div>
+      <button class="add-btn" type="button" data-add="hour">＋ Add a row</button>
+    </div>
+    <div class="info-box editbox" data-edit="find">
+      <button class="edit-btn" type="button">✏️ Edit</button>
+      <div class="edit-body">
+        <h3>📍 Find us</h3>
+        <p>123 Sprinkle Lane<br>Frostville, ST 12345</p>
+        <p style="margin-top:10px">📞 (555) 012-3456<br>✉️ hello@alexs.example</p>
+      </div>
+    </div>
+    <div class="info-box">
+      <h3>💌 Join the Club</h3>
+      <p style="margin-bottom:10px">Get new-flavor alerts &amp; a free sprinkle upgrade.</p>
+      <form id="newsletter">
+        <input type="email" placeholder="you@example.com" required="">
+        <button class="btn pink" type="submit" style="margin:0">Sign me up</button>
+        <div class="msg" id="nlMsg"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Alex's Data Center — a fake shop for prototype purposes 🍦</p>
+  <button id="resetBtn">Reset all edits &amp; images</button>
+</footer>
+
+<input type="file" id="flavorFile" accept="image/png,image/jpeg" hidden="">
+
+<script>
+/* ---------- DATA ---------- */
+const STORE_KEY = "alexsIceCreamV1";
+const STATUS_LABEL = {wip:"🚧 WIP", done:"✅ Tried & True"};
+const STATUS_CYCLE = [null,"wip","done"];
+
+const defaultFlavors = [
+  {name:"Vanilla Bean Dream", emoji:"🍦", color:"#fff1c9", fav:true, status:"done",
+   ing:[["Heavy cream","2 cups"],["Whole milk","1 cup"],["Cane sugar","3/4 cup"],["Egg yolks","4"],["Vanilla bean (scraped)","1"]]},
+  {name:"Double Choc Fudge", emoji:"🍫", color:"#c89a85", fav:true, status:"done",
+   ing:[["Heavy cream","1 1/2 cups"],["Whole milk","1 cup"],["Dark cocoa","1/2 cup"],["Sugar","3/4 cup"],["Fudge chunks","1/2 cup"]]},
+  {name:"Strawberry Fields", emoji:"🍓", color:"#ffc2d1", fav:false, status:"wip",
+   ing:[["Fresh strawberries","2 cups"],["Heavy cream","1 1/2 cups"],["Whole milk","1 cup"],["Sugar","1/2 cup"],["Lemon juice","1 tbsp"]]},
+  {name:"Mint Choc Chip", emoji:"🌿", color:"#b8f0dc", fav:false, status:"done",
+   ing:[["Heavy cream","2 cups"],["Whole milk","1 cup"],["Sugar","3/4 cup"],["Fresh mint leaves","1/2 cup"],["Dark choc chips","1/2 cup"]]},
+  {name:"Salted Caramel Swirl", emoji:"🧂", color:"#f5c27a", fav:true, status:"wip",
+   ing:[["Heavy cream","2 cups"],["Whole milk","1 cup"],["Caramel sauce","1/3 cup"],["Sugar","1/2 cup"],["Sea salt","1/2 tsp"]]},
+  {name:"Mango Sunshine", emoji:"🥭", color:"#ffd36b", fav:false, status:"wip",
+   ing:[["Ripe mango","2 cups"],["Protein powder (vanilla)","1 scoop"],["Coconut milk","1/2 cup"],["Honey","1 tbsp"],["Lime juice","1 tbsp"]]},
+  {name:"Cookie Dough Chaos", emoji:"🍪", color:"#e8cfa8", fav:false, status:null,
+   ing:[["Heavy cream","2 cups"],["Whole milk","1 cup"],["Edible cookie dough","1 cup"],["Brown sugar","1/4 cup"],["Choc chips","2 tbsp"]]},
+  {name:"Lavender Honey", emoji:"💜", color:"#dcc8f5", fav:false, status:null,
+   ing:[["Heavy cream","2 cups"],["Whole milk","1 cup"],["Local honey","3 tbsp"],["Sugar","1/4 cup"],["Dried lavender","1 tbsp"]]},
+].map((f,i)=>({...f,id:"d"+i,image:null}));
+
+let flavors = load() || defaultFlavors;
+let avatarImg = localStorage.getItem(STORE_KEY+"_avatar") || null;
+let filter = "all";
+
+function load(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY)); }catch(e){ return null; } }
+function save(){
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(flavors)); }
+  catch(e){ console.warn("Couldn't save (storage full?)", e); }
+}
+const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const getF = id => flavors.find(f=>f.id===id);
+
+/* ---------- HERO FLAIR ---------- */
+(function(){
+  const hero = document.getElementById("top");
+  const colors = ["#ff8fb1","#8fe3cf","#ffd98a","#b79cf0","#ff9f6b","#7cc4ff","#ffffff"];
+  for(let i=0;i<50;i++){
+    const s = document.createElement("i");
+    s.className = "sprinkle";
+    s.style.left = Math.random()*100+"%";
+    s.style.background = colors[i%colors.length];
+    s.style.animationDuration = (6+Math.random()*9)+"s";
+    s.style.animationDelay = (-Math.random()*15)+"s";
+    s.style.setProperty("--r", Math.floor(Math.random()*360)+"deg");
+    hero.appendChild(s);
+  }
+  const icons = ["🍓","🍫","🍋","🍪","🍒","🥭","🍦","🍨","🧁","⭐","🌿","🍯","🥜","🫐"];
+  for(let i=0;i<14;i++){
+    const e = document.createElement("span");
+    e.className = "float";
+    e.textContent = icons[i%icons.length];
+    const left = i%2 ? 2+Math.random()*20 : 76+Math.random()*20;
+    e.style.left = left+"%";
+    e.style.top = (6+Math.random()*68)+"%";
+    e.style.fontSize = (1.8+Math.random()*2.4)+"rem";
+    e.style.animationDuration = (4+Math.random()*4)+"s";
+    e.style.animationDelay = (-Math.random()*6)+"s";
+    hero.appendChild(e);
+  }
+})();
+
+/* ---------- IMAGE HANDLING ---------- */
+function readImage(file, cb){
+  if(!file || !/^image\/(png|jpeg)$/.test(file.type)){
+    alert("Please choose a PNG or JPEG image."); return;
+  }
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      const max = 600, scale = Math.min(1, max/Math.max(img.width,img.height));
+      const c = document.createElement("canvas");
+      c.width = img.width*scale; c.height = img.height*scale;
+      c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+      cb(c.toDataURL(file.type, .85));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ---------- RENDER FLAVORS ---------- */
+const grid = document.getElementById("flavorGrid");
+const fileInput = document.getElementById("flavorFile");
+let uploadTargetId = null;
+
+function isVisible(f){
+  return filter==="all" || (filter==="fav"&&f.fav) || (filter==="wip"&&f.status==="wip") || (filter==="done"&&f.status==="done");
+}
+
+function cardHTML(f){
+  return `
+  <article class="card ${f.fav?"fav":""}" data-id="${f.id}">
+    <div class="img-box" data-act="upload" style="background:${f.color}">
+      ${f.image ? `<img src="${f.image}" alt="${esc(f.name)}">` : `<span class="emoji">${f.emoji}</span>`}
+      <button class="tag ${f.status||"none"}" data-act="tag" title="Click to change sticker">${f.status?STATUS_LABEL[f.status]:"+ sticker"}</button>
+      <button class="star ${f.fav?"on":""}" data-act="fav" title="Personal favorite">${f.fav?"★":"☆"}</button>
+      <div class="upload-overlay">📷 ${f.image?"Change":"Upload"} picture
+        ${f.image?`<button class="rm" data-act="clearimg">remove</button>`:""}
+      </div>
+    </div>
+    <button class="del" data-act="delete" title="Delete flavor">✕</button>
+    <div class="info">
+      <h3 contenteditable="true" spellcheck="false" data-field="name" data-ph="Flavor name">${esc(f.name)}</h3>
+      <ul class="ings">
+        ${f.ing.map((x,i)=>`<li>
+          <span class="iname" contenteditable="true" spellcheck="false" data-field="iname" data-i="${i}" data-ph="ingredient">${esc(x[0])}</span>
+          <span class="iamt" contenteditable="true" spellcheck="false" data-field="iamt" data-i="${i}" data-ph="amount">${esc(x[1])}</span>
+          <button class="irm" data-act="rmIng" data-i="${i}" title="Remove ingredient">✕</button>
+        </li>`).join("")}
+      </ul>
+      <button class="add-ing" data-act="addIng">＋ ingredient</button>
+    </div>
+  </article>`;
+}
+
+function render(){
+  const list = flavors.filter(isVisible);
+  grid.innerHTML =
+    list.map(cardHTML).join("") +
+    (list.length ? "" : `<p class="empty">Nothing here yet — star a flavor or change a sticker!</p>`) +
+    `<button class="card add-card" data-act="add"><div><span>＋</span>Add a flavor</div></button>`;
+  updateStats();
+}
+
+function updateStats(){
+  document.getElementById("statTotal").textContent = flavors.length;
+  document.getElementById("statFav").textContent = flavors.filter(f=>f.fav).length;
+  document.getElementById("statDone").textContent = flavors.filter(f=>f.status==="done").length;
+}
+
+grid.addEventListener("click", e=>{
+  const act = e.target.closest("[data-act]");
+  if(!act) return;
+  const card = e.target.closest(".card");
+  const id = card && card.dataset.id;
+  const f = id && getF(id);
+  switch(act.dataset.act){
+    case "upload": uploadTargetId = id; fileInput.click(); break;
+    case "clearimg": f.image=null; save(); render(); break;
+    case "fav": f.fav=!f.fav; save(); render(); break;
+    case "tag":
+      f.status = STATUS_CYCLE[(STATUS_CYCLE.indexOf(f.status||null)+1)%STATUS_CYCLE.length];
+      save(); render(); break;
+    case "delete":
+      if(confirm("Delete this flavor?")){ flavors = flavors.filter(x=>x.id!==id); save(); render(); }
+      break;
+    case "addIng": {
+      f.ing.push(["",""]); save(); render();
+      const names = grid.querySelectorAll(`.card[data-id="${id}"] .iname`);
+      names[names.length-1].focus();
+      break;
+    }
+    case "rmIng":
+      f.ing.splice(+act.dataset.i,1); save(); render(); break;
+    case "add":
+      filter = "all"; syncFilters();
+      flavors.push({id:"c"+Date.now(), name:"New Flavor", emoji:"🍨", color:"#ffe3ec", fav:false, status:"wip",
+        image:null, ing:[["Heavy cream","2 cups"],["Whole milk","1 cup"],["Sugar","3/4 cup"]]});
+      save(); render(); break;
+  }
+});
+
+fileInput.addEventListener("change", ()=>{
+  const file = fileInput.files[0], id = uploadTargetId;
+  fileInput.value = "";
+  readImage(file, data=>{ getF(id).image = data; save(); render(); });
+});
+
+grid.addEventListener("dragover", e=>{ const b=e.target.closest(".img-box"); if(b){e.preventDefault(); b.classList.add("dragover");} });
+grid.addEventListener("dragleave", e=>{ const b=e.target.closest(".img-box"); if(b) b.classList.remove("dragover"); });
+grid.addEventListener("drop", e=>{
+  const b = e.target.closest(".img-box"); if(!b) return;
+  e.preventDefault(); b.classList.remove("dragover");
+  const id = b.closest(".card").dataset.id;
+  readImage(e.dataTransfer.files[0], data=>{ getF(id).image = data; save(); render(); });
+});
+
+grid.addEventListener("focusout", e=>{
+  const el = e.target.closest("[data-field]");
+  if(!el || !el.isConnected) return;
+  const f = getF(el.closest(".card").dataset.id); if(!f) return;
+  const v = el.textContent.trim();
+  switch(el.dataset.field){
+    case "name": f.name = v || "Unnamed"; break;
+    case "iname": if(f.ing[el.dataset.i]) f.ing[el.dataset.i][0] = v; break;
+    case "iamt":  if(f.ing[el.dataset.i]) f.ing[el.dataset.i][1] = v; break;
+  }
+  save();
+});
+grid.addEventListener("keydown", e=>{
+  if(e.key==="Enter" && e.target.isContentEditable){ e.preventDefault(); e.target.blur(); }
+});
+grid.addEventListener("paste", e=>{
+  if(e.target.isContentEditable){
+    e.preventDefault();
+    document.execCommand("insertText", false, e.clipboardData.getData("text/plain"));
+  }
+});
+
+function syncFilters(){
+  document.querySelectorAll("#filters .chip").forEach(c=>c.classList.toggle("active", c.dataset.filter===filter));
+}
+document.getElementById("filters").addEventListener("click", e=>{
+  const b = e.target.closest(".chip"); if(!b) return;
+  filter = b.dataset.filter; syncFilters(); render();
+});
+
+/* ---------- SUGGEST A CONE ---------- */
+const SUG_KEY = STORE_KEY+"_sug";
+const PROTEIN_COLORS = {Chocolate:"#c89a85", Vanilla:"#fff1c9", None:"#ffd1e0"};
+let suggestions = null;
+try{ suggestions = JSON.parse(localStorage.getItem(SUG_KEY)); }catch(e){}
+if(!Array.isArray(suggestions)){
+  suggestions = [{id:"s0", name:"Cookies & Cream Gains", protein:"Chocolate",
+    desc:"Tastes like an Oreo milkshake. Chocolate protein, crushed cookies, frozen banana, splash of milk."}];
+}
+let protein = "None";
+const saveSug = () => { try{ localStorage.setItem(SUG_KEY, JSON.stringify(suggestions)); }catch(e){} };
+const sName = document.getElementById("sName"), sDesc = document.getElementById("sDesc"), sMsg = document.getElementById("sMsg");
+
+function updatePreview(){
+  document.getElementById("previewName").textContent = sName.value.trim() || "Your cone name";
+  document.getElementById("previewScoop").style.background = PROTEIN_COLORS[protein];
+  document.querySelectorAll("#proteinSeg .chip").forEach(c=>c.classList.toggle("active", c.dataset.p===protein));
+}
+sName.addEventListener("input", updatePreview);
+document.getElementById("proteinSeg").addEventListener("click", e=>{
+  const b = e.target.closest(".chip"); if(!b) return;
+  protein = b.dataset.p; updatePreview();
+});
+document.getElementById("suggestForm").addEventListener("submit", e=>{
+  e.preventDefault();
+  const name = sName.value.trim(), desc = sDesc.value.trim();
+  if(!name || !desc) return;
+  suggestions.unshift({id:"s"+Date.now(), name, protein, desc});
+  saveSug(); renderSug();
+  e.target.reset(); protein = "None"; updatePreview();
+  sMsg.textContent = "💡 Thanks! Your suggestion is in the box below.";
+});
+function renderSug(){
+  document.getElementById("suggestions").innerHTML = suggestions.length
+    ? `<h3>💡 Suggestion box</h3><div class="sug-grid">${suggestions.map(s=>`
+        <div class="sug" data-id="${s.id}">
+          <span class="ptag">Protein powder: ${esc(s.protein)}</span>
+          <h4>${esc(s.name)}</h4>
+          <p>${esc(s.desc)}</p>
+          <div class="sug-actions">
+            <button class="chip" data-sact="promote">＋ Add to flavors</button>
+            <button class="chip" data-sact="del" title="Delete">✕</button>
+          </div>
+        </div>`).join("")}</div>`
+    : "";
+}
+document.getElementById("suggestions").addEventListener("click", e=>{
+  const b = e.target.closest("[data-sact]"); if(!b) return;
+  const id = b.closest(".sug").dataset.id;
+  const s = suggestions.find(x=>x.id===id); if(!s) return;
+  if(b.dataset.sact==="del"){
+    suggestions = suggestions.filter(x=>x.id!==id); saveSug(); renderSug();
+  } else {
+    const ing = [];
+    if(s.protein!=="None") ing.push(["Protein powder ("+s.protein.toLowerCase()+")","1 scoop"]);
+    ing.push([s.desc.slice(0,80),"to taste"]);
+    flavors.push({id:"c"+Date.now(), name:s.name, emoji:"🍨", color:PROTEIN_COLORS[s.protein],
+      fav:false, status:"wip", image:null, ing});
+    suggestions = suggestions.filter(x=>x.id!==id);
+    save(); saveSug(); filter="all"; syncFilters(); render(); renderSug();
+    sMsg.textContent = `✅ "${s.name}" was added to Flavors as a 🚧 WIP.`;
+  }
+});
+
+/* ---------- EDIT BUTTONS (About, Reviews, Hours, Find us) ---------- */
+const EDIT_KEY = STORE_KEY+"_edits";
+let edits = {};
+try{ edits = JSON.parse(localStorage.getItem(EDIT_KEY)) || {}; }catch(e){}
+const EDIT_SEL = "h2,h3,p,small,.stars,td:not(.x-td)";
+const RM_BTN = `<button type="button" class="x-rm" title="Remove">✕</button>`;
+const TEMPLATES = {
+  review: `<div class="review"><div class="stars">★★★★★</div><p>"Write a review here…"</p><small>— Someone Nice</small></div>`,
+  hour:   `<tr><td>Day</td><td>9 – 5 pm</td></tr>`
+};
+const bodyOf = box => box.querySelector(".edit-body");
+
+document.querySelectorAll(".editbox").forEach(box=>{
+  if(edits[box.dataset.edit]) bodyOf(box).innerHTML = edits[box.dataset.edit];
+});
+
+function prepare(box){            // safe to call repeatedly
+  const body = bodyOf(box);
+  body.querySelectorAll(EDIT_SEL).forEach(el=>{ el.setAttribute("contenteditable","true"); el.spellcheck=false; });
+  body.querySelectorAll(".review").forEach(r=>{ if(!r.querySelector(".x-rm")) r.insertAdjacentHTML("beforeend", RM_BTN); });
+  body.querySelectorAll("tbody tr").forEach(tr=>{
+    if(!tr.querySelector(".x-td")) tr.insertAdjacentHTML("beforeend", `<td class="x-td">${RM_BTN}</td>`);
+  });
+}
+function finish(box){
+  const body = bodyOf(box);
+  body.querySelectorAll(".x-td").forEach(t=>t.remove());
+  body.querySelectorAll(".x-rm").forEach(b=>b.remove());
+  body.querySelectorAll("[contenteditable]").forEach(el=>el.removeAttribute("contenteditable"));
+  edits[box.dataset.edit] = body.innerHTML;
+  try{ localStorage.setItem(EDIT_KEY, JSON.stringify(edits)); }catch(e){ console.warn(e); }
+}
+document.addEventListener("click", e=>{
+  const box = e.target.closest(".editbox"); if(!box) return;
+  const editBtn = e.target.closest(".edit-btn");
+  if(editBtn){
+    const on = box.classList.toggle("editing");
+    editBtn.textContent = on ? "✓ Save" : "✏️ Edit";
+    on ? prepare(box) : finish(box);
+    return;
+  }
+  if(!box.classList.contains("editing")) return;
+  if(e.target.closest(".x-rm")){
+    const row = e.target.closest(".review, tr"); if(row) row.remove();
+    return;
+  }
+  const add = e.target.closest(".add-btn");
+  if(add){
+    const kind = add.dataset.add;
+    box.querySelector(kind==="review" ? ".reviews" : "tbody").insertAdjacentHTML("beforeend", TEMPLATES[kind]);
+    prepare(box);
+  }
+});
+document.addEventListener("keydown", e=>{
+  if(e.key!=="Enter" || !e.target.isContentEditable || !e.target.closest(".editbox")) return;
+  e.preventDefault();
+  if(e.target.tagName==="P") document.execCommand("insertLineBreak"); else e.target.blur();
+});
+document.addEventListener("paste", e=>{
+  if(e.target.isContentEditable && e.target.closest(".editbox")){
+    e.preventDefault();
+    document.execCommand("insertText", false, e.clipboardData.getData("text/plain"));
+  }
+});
+
+/* ---------- ABOUT AVATAR ---------- */
+const avatar = document.getElementById("avatar"), avatarInput = document.getElementById("avatarInput");
+function drawAvatar(){
+  avatar.innerHTML = avatarImg ? `<img src="${avatarImg}" alt="Owner photo">` : `<span>🧑‍🍳</span>`;
+}
+avatar.addEventListener("click", ()=>avatarInput.click());
+avatarInput.addEventListener("change", ()=>{
+  const file = avatarInput.files[0]; avatarInput.value="";
+  readImage(file, d=>{ avatarImg=d; try{localStorage.setItem(STORE_KEY+"_avatar", d);}catch(e){} drawAvatar(); });
+});
+drawAvatar();
+
+/* ---------- NEWSLETTER & RESET ---------- */
+document.getElementById("newsletter").addEventListener("submit", e=>{
+  e.preventDefault();
+  document.getElementById("nlMsg").textContent = "🍧 You're in the Club! (Not really, it's a prototype.)";
+  e.target.reset();
+});
+document.getElementById("resetBtn").addEventListener("click", ()=>{
+  if(confirm("Reset everything back to the original demo?")){
+    [STORE_KEY, STORE_KEY+"_avatar", EDIT_KEY, SUG_KEY].forEach(k=>localStorage.removeItem(k));
+    location.reload();
+  }
+});
+
+render();
+renderSug();
+updatePreview();
+</script>
+
+
+</body></html>
